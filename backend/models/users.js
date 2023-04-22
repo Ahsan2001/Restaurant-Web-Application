@@ -26,6 +26,5 @@ const User = new mongoose.Schema({
 // Define model for Users collection
 const Users = mongoose.model("Users", User)
 
-
 // Export Users model
 module.exports = Users
