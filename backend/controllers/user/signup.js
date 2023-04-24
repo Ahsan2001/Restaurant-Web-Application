@@ -1,7 +1,6 @@
 // Import required modules
 const bcrypt = require('bcrypt');
-const Users = require('../models/users');
-
+const Users = require('../../models/users');
 // Define the signup controller function
 const signupController = async (req, res) => {
     // Extract data from request body
