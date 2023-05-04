@@ -8,10 +8,9 @@ const dbURL = process.env.BASEURL;
 mongoose.connect(dbURL, { 
     useNewUrlParser: true, 
     useUnifiedTopology: true
-
 })
-    .then(() => console.log('MongoDB connected'))
-    .catch((error) => console.log('MongoDB connection error:', error));
+.then(() => console.log('MongoDB connected'))
+.catch((error) => console.log('MongoDB connection error:', error));
 
 // Set up database connection event listeners
 mongoose.connection.on('connected', () => console.log('MongoDB connected'));
