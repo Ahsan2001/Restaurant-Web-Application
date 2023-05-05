@@ -20,7 +20,7 @@ const port =  process.env.PORT ||  4000 ;
 // const orderRoutes = require("./routes/order")
 const userRoutes = require("./routes/user")
 
-app.use("/api/v1", product)
+// app.use("/api/v1", product)
 
 
 
@@ -53,7 +53,15 @@ app.get('/', (req, res) => {
 
 
 
+const server = app.listen(process.env.PORT, () => {
+  console.log(`server is running on http://localhost:${process.env.PORT}`);
+})
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+// Handle Unhandled Promise rejections
+process.on('unhandledRejection', err => {
+  console.log(`ERROR: ${err.stack}`);
+  console.log('Shutting down the server due to Unhandled Promise rejection');
+  server.close(() => {
+      process.exit(1)
+  })
 })
