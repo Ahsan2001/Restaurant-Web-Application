@@ -20,6 +20,10 @@ const port =  process.env.PORT ||  4000 ;
 // const orderRoutes = require("./routes/order")
 const userRoutes = require("./routes/user")
 
+app.use("/api/v1", product)
+
+
+
 // app.use('/food', foodRoutes)
 // app.use('/order', orderRoutes)
 app.use('/user', userRoutes)
@@ -43,6 +47,10 @@ app.get('/', (req, res) => {
 // app.delete('/user', (req, res) => {
 //   res.send('Got a DELETE request at /user')
 // })
+
+
+
+
 
 
 
