@@ -7,8 +7,8 @@ const signupController = require('../controllers/user/signup');
 const loginController = require('../controllers/user/login');
 
 // Define routes for signup and login
-router.post('/api/signup', signupController);
-router.post('/api/login', loginController);
+router.route("/api/signup").post(signupController)
+router.route("/api/login").post(loginController)
 
 // Export router
 module.exports = router;
