@@ -28,9 +28,9 @@ const Login = () => {
           <div class="flex flex-row">
               <div class="flex-4">
                   <div className={styles.left_inner_content}>
-                      <h2>Welcome Back! <br />  Login to your <span>Account</span></h2>
+                    <h2>Welcome Back! <br />  Login to your <span>Account</span></h2>
+                    <img src={salyImg} alt="left side image" />
                   </div>
-                  <img src={salyImg} alt="left side image" />
               </div>
               <div class="flex-6">
                   <form action="" className={styles.right_inner_content}>
