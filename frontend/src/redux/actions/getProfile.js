@@ -6,9 +6,7 @@ const getProfile = (username) => {
         dispatch({
             type: ActionTypes.GET_GITHUB_PROFILE_LOADING,
         });
-
         const searchValue = username ? username : "Ahsan2001";
-
         axios
             .get(`https://api.github.com/users/${searchValue}`)
             .then((res) => {
