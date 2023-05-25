@@ -25,7 +25,6 @@ const Login = () => {
 
   const handleForm =  (e) => {
       e.preventDefault();
-       
       // SetLoader(true)
       window.alert(`
           Email: ${email} 
@@ -56,8 +55,8 @@ const Login = () => {
               <h2 className="text-center lg:text-left"> Join with us and <br /> create your  <span>Account</span></h2>
             </div>
             <div className={styles.inner_image}>
-                  <img src={salyImg} alt="left side image" className="mx-auto" />
-              </div>
+                <img src={salyImg} alt="left side image" className="mx-auto" />
+            </div>
           </div>
           <div className="w-full lg:w-7/12">
             <form onSubmit={handleForm} className={`${styles.right_inner_content} p-24`}>
