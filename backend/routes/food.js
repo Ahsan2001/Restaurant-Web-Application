@@ -3,20 +3,24 @@ const express = require('express');
 const router = express.Router();
 
 // Import controllers
-const { getAllFoodItems, getOneFoodItem }  = require('../controllers/food/getItem');
-const createFoods = require('../controllers/food/create');
-const editFoodItem = require('../controllers/food/update');
-const deleteItem = require('../controllers/food/remove');
 
-// Define routes
-router.route("/foods").get(getAllFoodItems)
-router.route("/foods/:id").get(getOneFoodItem)
+const { getAllFoodItems, getOneFoodItem }  = require('../controllers/food/getItem');
+const {createFoods, upload} = require('../controllers/food/create');
+const {editFoodItem, uploadUpdated} = require('../controllers/food/update');
+const deleteFoodItem = require('../controllers/food/remove');
+
+// User routes
+router.route("/api/foods").get(getAllFoodItems);
+router.route("/api/foods/:id").get(getOneFoodItem);
 
 
 // Admin Routes 
-router.route("/admin/item/add").post(createFoods)
-router.route("/admin/item/:id").put(editFoodItem)
-router.route("/admin/item/:id").delete(deleteItem)
+
+router.route("/api/admin/food/add").post(upload.single('image'), createFoods);
+router.route("/api/admin/food/edit/:id").put(uploadUpdated.single('image'), editFoodItem);
+router.route("/api/admin/food/delete/:id").delete(deleteFoodItem);
+
+
 
 // Export router
 module.exports = router;

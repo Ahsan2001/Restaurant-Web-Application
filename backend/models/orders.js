@@ -4,11 +4,15 @@ const mongoose = require('mongoose');
 // Define schema for Order collection
 const OrderSchema = new mongoose.Schema({
     items: {
-        type: Number,
+        type: String,
         required: true
     },
-    status: {
+    detail: {
         type: String,
+        required: true,
+    },
+    status: {
+        type: Boolean,
         required: true
     },
     totalAmount: {

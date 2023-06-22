@@ -9,7 +9,7 @@ const WebRoutes = () => {
           <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="*" element={<Signup />} />
+              <Route path="*" element={ <h1>404 Page Error</h1>} />
           </Routes>
       </Router>
   )

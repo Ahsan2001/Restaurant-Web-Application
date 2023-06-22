@@ -4,7 +4,7 @@ const Users = require('../../models/users');
 
 
 // Define the login controller function
-const loginController = async (req, res) => {
+const signinController = async (req, res) => {
     // Extract data from request body
     const { email, password } = req.body;
 
@@ -35,4 +35,4 @@ const loginController = async (req, res) => {
 }
 
 
-module.exports = loginController;
+module.exports = signinController;

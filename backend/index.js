@@ -1,10 +1,20 @@
 const express = require('express')
+const cors = require("cors");
 const app = express()
 
 //bodyAllow
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+// for cors origin allow all 
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions))
 
 const dotenv = require("dotenv");
 dotenv.config( { path: './config.env'} );
@@ -16,20 +26,13 @@ require("./database/config")
 
 const port =  process.env.PORT ||  4000 ;
 // routing call
-// const foodRoutes = require("./routes/food")
 // const orderRoutes = require("./routes/order")
-const userRoutes = require("./routes/user")
-
-// app.use("/api/v1", product)
-
+const foodRouter = require("./routes/food")
+const authRouter = require("./routes/auth")
 
 
-// app.use('/food', foodRoutes)
-// app.use('/order', orderRoutes)
-app.use('/user', userRoutes)
-
-
-
+app.use(authRouter);
+app.use(foodRouter);
 
 
 app.get('/', (req, res) => {
