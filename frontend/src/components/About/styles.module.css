@@ -1,0 +1,15 @@
+.inner_content h4{
+    font-size: 20px;
+    font-family: 'Pacifico', cursive;
+    color: #ea625c;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+.inner_content h3{
+    font-size: 24px;
+    font-family: 'Bitter', serif;
+    font-weight: 700;
+    color: #010101;
+    text-transform: uppercase;
+}

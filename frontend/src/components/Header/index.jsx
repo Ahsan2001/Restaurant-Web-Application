@@ -3,7 +3,9 @@ import styles from './styles.module.css';
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <header>
+      <div>Header</div>
+    </header>
   )
 }
 

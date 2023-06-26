@@ -1,19 +1,15 @@
 import React from 'react'
 import { Footer, Header } from '../components'
 
-
 const Layout = (props) => {
+    const {children} = props;
     return (
         <>
-            <header>
-              <Header />
-            </header>
-            <main>
-                {props.children}
-            </main>
-            <footer>
-                <Footer />
-            </footer>
+            <Header />
+                <main>
+                    {children}
+                </main>
+            <Footer />
         </>
     )
 }

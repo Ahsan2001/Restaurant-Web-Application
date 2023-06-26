@@ -6,15 +6,15 @@ const INITIAL_STATE = {
     error: "",
 };
 
-const getUserReducer = (state = INITIAL_STATE, action) => {
+const getUser = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case ActionTypes.GET_USER_PROFILE_LOADING:
+        case ActionTypes.GET_REGISTER_USER_PROFILE_LOADING:
             return {
                 ...state,
                 loading: true,
             };
 
-        case ActionTypes.GET_USER_PROFILE:
+        case ActionTypes.GET_REGISTER_USER_PROFILE:
             return {
                 ...state,
                 data: action.payload,
@@ -22,7 +22,7 @@ const getUserReducer = (state = INITIAL_STATE, action) => {
                 error: "",
             };
 
-        case ActionTypes.GET_USER_PROFILE_ERROR:
+        case ActionTypes.GET_REGISTER_USER_PROFILE_ERROR:
             return {
                 ...state,
                 loading: false,
@@ -35,4 +35,4 @@ const getUserReducer = (state = INITIAL_STATE, action) => {
     }
 };
 
-export { getUserReducer };
+export { getUser };
