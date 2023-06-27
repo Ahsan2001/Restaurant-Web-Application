@@ -6,7 +6,12 @@ const INITIAL_STATE = {
     error: "",
 };
 
+
 const getUser = (state = INITIAL_STATE, action) => {
+
+
+    console.log(action , "action in reducers ")
+
     switch (action.type) {
         case ActionTypes.GET_REGISTER_USER_PROFILE_LOADING:
             return {

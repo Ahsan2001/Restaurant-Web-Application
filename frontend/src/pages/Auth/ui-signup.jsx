@@ -9,7 +9,7 @@ import { documentTitle,PopUpMsg } from '../../utils';
 import { SpinnerLoader } from '../../components';
 import { signupSchema } from '../../schemas';
 import { TogglePassword } from './auth';
-// import { getUser } from "../../redux/actions/getUser"
+import { getUser } from "../../redux/reducers/getUser"
  
 
 // import assets 
@@ -45,7 +45,7 @@ const Signup = () => {
     validationSchema: signupSchema,
     onSubmit: (values, action) => {
       console.log(values, "values")
-      // dispatch(getUser(values));
+      dispatch(getUser(values));
       // action.resetForm()
     }
   })

@@ -18,7 +18,6 @@ const RegisterUser = {
         payload: {error: value}
     })
 
-
 };
 
 
