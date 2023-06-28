@@ -4,10 +4,10 @@ const Users = require('../../models/users');
 // Define the signup controller function
 const signupController = async (req, res) => {
     // Extract data from request body
-    const { name, email, role, password } = req.body;
+    const { name, email, password } = req.body;
 
     // Validate request body
-    if (!name || !email || !role || !password ) {
+    if (!name || !email || !password ) {
         return res.status(422).json({ error: 'Please fill all the fields properly' });
     }
 
@@ -25,7 +25,6 @@ const signupController = async (req, res) => {
         const newUser = new Users({
             name,
             email,
-            role,
             password: hashedPassword,
         });
 
