@@ -4,10 +4,10 @@ const Users = require('../../models/users');
 // Define the signup controller function
 const signupController = async (req, res) => {
     // Extract data from request body
-    const { name, email, password } = req.body;
+    const { name, email, password } = await req.body;
 
     // Validate request body
-    if (!name || !email || !password ) {
+    if ( !email || !name || !password  ) {
         return res.status(422).json({ error: 'Please fill all the fields properly' });
     }
 
@@ -32,7 +32,11 @@ const signupController = async (req, res) => {
         await newUser.save();
 
         // Return success message
-        return res.status(201).json({ message: 'User successfully registered', newUser }, 
+        return res.status(201).json({ 
+            message: 'User successfully registered', 
+            data: newUser,
+            status: 201,
+        }
         );
     } catch (err) {
         // Handle errors

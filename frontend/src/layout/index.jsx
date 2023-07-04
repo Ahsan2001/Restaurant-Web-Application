@@ -1,5 +1,5 @@
-import React from 'react'
-import { Footer, Header } from '../components'
+import React from 'react';
+import { Footer, Header } from '../components';
 
 const Layout = (props) => {
     const {children} = props;
