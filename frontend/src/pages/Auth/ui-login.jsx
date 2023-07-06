@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // import microservices
 import { documentTitle } from '../../utils';
 import { SpinnerLoader } from '../../components';
-import { TogglePassword } from './auth';
+
 
 // import assets 
 import styles from "./auth.module.css";
@@ -43,9 +43,10 @@ const Login = () => {
       // SetLoader(false);
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  }
 
-
- 
 
   return (
     <section className={`${styles.login_page} h-screen flex justify-center items-center`}>
@@ -69,7 +70,9 @@ const Login = () => {
               <div className={styles.input_field}>
                 <input type={showPassword ? `text` : `password`}  placeholder="Password" value={password} onChange={handleChange(SetPassword)} required />
                 <FontAwesomeIcon icon={faLock} />
-                <TogglePassword showPassword={showPassword} setShowPassword={setShowPassword} />
+                <span className={styles.show_password} onClick={togglePasswordVisibility}>
+                  {showPassword ? 'Hide Password' : 'Show Password'}
+                </span>
               </div>
 
               <div className={styles.google_facebook_btns}>

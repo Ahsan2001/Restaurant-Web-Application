@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 import { documentTitle, PopUpMsg } from '../../utils';
 import { SpinnerLoader, Toast } from '../../components';
 import { signupSchema } from '../../schemas';
-import { TogglePassword } from './auth'
 
 
 // import assets 
@@ -21,15 +20,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons'
 import { RegisterUser } from '../../redux/actions/registerUser';
 
+
+
+  // show password function
+
+  
+
 const Signup = () => {
 
   // page title 
   documentTitle("Register")
 
-
   // page state
   const [showPassword, setShowPassword] = useState(false);
-
 
   // redux state
   const { data, loading, error } = useSelector(state => state.getUser);
@@ -43,39 +46,33 @@ const Signup = () => {
   }
 
 
-  // Navigate into Login page
-  const navigate = useNavigate();
-  const NavigateScreen = () => {
-    // try {
-      console.log("a")
-      if (data.status === 201) {
-        console.log("c")
-        toast.success(data.message)
-        navigate("/login")
-      }
-      else{
-        console.log("b")
 
-        toast.error(error)
-      }
-    // } catch (err) {
-    //   console.log("b")
-    //   toast.error(err)
-    // }
-  }
 
   // Onsubmit FormIk library Function 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
     validationSchema: signupSchema,
-    onSubmit: (values, action) => {
+    onSubmit:  async (values, action) => {
       dispatch(RegisterUser(values));
-      setTimeout(  ()=> {
-        NavigateScreen()
-      }, 5000   )
       action.resetForm()
     }
   })
+
+
+  // Navigate into Login page
+  const navigate = useNavigate();
+  if (data.status === 201) {
+    toast.success(data.message);
+    navigate("/login");
+  }
+
+
+
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  }
+
 
 
 
@@ -127,7 +124,9 @@ const Signup = () => {
                     onBlur={handleBlur} autoComplete="off"
                     value={values.password} onChange={handleChange} />
                   <FontAwesomeIcon icon={faLock} />
-                  <TogglePassword showPassword={showPassword} setShowPassword={setShowPassword} />
+                  <span className={styles.show_password} onClick={togglePasswordVisibility}>
+                    {showPassword ? 'Hide Password' : 'Show Password'}
+                  </span>
                   {errors.password && touched.password ? <p style={{ position: "absolute", bottom: "0" }}>{errors.password}</p> : null}
                 </div>
 
